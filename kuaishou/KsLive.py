@@ -37,8 +37,6 @@ class Tool:
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
     }
-    # 存储用户直播信息 比如直播地址
-    userLiveInfo = ''
 
     # 初始化
     def init(self, liveUrl: str, cookie: str):
@@ -53,22 +51,17 @@ class Tool:
         st = liveUrl.split('/')
         st = st[len(st) - 1]
         res = requests.get(url=liveUrl, headers=self.headers)
+        # print(res.text)
         userTag = '$ROOT_QUERY.webLiveDetail({\"authToken\":\"\",\"principalId\":\"' + st + '\"})'
         ss = re.search(
-            r'__APOLLO_STATE__=(.*?);\(function\(\)\{var s;\(s=document\.currentScript\|\|document\.scripts\[document\.scripts\.length-1]\)\.parentNode\.r',
+            r'_STATE__=(.*?);\(function\(\)\{var s;\(s=document\.currentScript\|\|document\.scripts\[document\.scripts\.length-1]\)\.parentNode\.r',
             res.text)
         text = ss.group(1)
         text = json.loads(text)
-        self.userLiveInfo = text['clients']['graphqlServerClient'][userTag]
-        self.liveRoomId = self.userLiveInfo['liveStream']['json']['liveStreamId']
+        self.liveRoomId = text['liveroom']['liveStream']['id']
         if self.liveRoomId == '':
             raise RuntimeError('liveRoomId获取失败')
         return self.liveRoomId
-
-    # 获取主播直播信息 （主播个人信息，直播地址，房间号等等）
-    def getAnchorInfo(self):
-        self.getLiveRoomId()
-        return self.userLiveInfo
 
     # 获取直播websocket信息
     def getWebSocketInfo(self, liveRoomId):
@@ -90,8 +83,6 @@ class Tool:
             self.webSocketUrl, on_message=self.onMessage, on_error=self.onError, on_close=self.onClose,
             on_open=self.onOpen
         )
-        # 使用代理
-        # ws.run_forever(http_proxy_host='122.228.252.123', http_proxy_port='49628', )
         ws.run_forever()
 
     def onMessage(self, ws: websocket.WebSocketApp, message: bytes):
@@ -259,7 +250,7 @@ class Tool:
 
         parser = StandardParser()
         with open('t-proto', 'rb') as fh:
-            output = parser.parse_message(fh, "message")
+            output = parser.parse_message(fh, 'message')
         print(output)
         return output
 

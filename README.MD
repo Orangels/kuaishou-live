@@ -61,7 +61,6 @@ pip install websocket-client-py3
 | KsLive.Tool.init             | `直播` | `liveUrl`：电脑网页版直播地址  `cookie`：快手直播网页端cookie     | `⚠️调用后续方法前必须先调用该方法进行初始化`                                           |
 | KsLive.Tool.wssServerStart   | `直播` | `liveUrl`：电脑网页版直播地址                             | 启动websocket客户端                                                     |
 | KsLive.Tool.getLiveRoomId    | `直播` |                                                 | 获取直播房间号id                                                          |
-| KsLive.Tool.getAnchorInfo    | `直播` |                                                 | 获取主播信息（如：主播个人信息、直播地址等）                                             |
 | KsLive.Tool.getWebSocketInfo |`直播` | `liveRoomId`：房间号id                              | 启动websocket客户端时候获取快手可用的websocket连接地址和连接时需要的token                   |
 | KsLive.Tool.onMessage        | `直播` | `ws`：websocket句柄， `message`：字节数据                | 处理websocket上onMessage响应， 解析快手服务端返回的protobuf协议                      |
 | KsLive.Tool.onError          | `直播` | `ws`：websocket句柄 `error` 错误信息                   | websocket连接`错误`时触发                                                 |
