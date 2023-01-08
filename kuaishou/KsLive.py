@@ -65,18 +65,15 @@ class Tool:
 
     # 获取直播websocket信息
     def getWebSocketInfo(self, liveRoomId):
-        variables = {
-            'liveStreamId': liveRoomId
-        }
-        query = 'query WebSocketInfoQuery($liveStreamId: String) {\n  webSocketInfo(liveStreamId: $liveStreamId) {\n    token\n    webSocketUrls\n    __typename\n  }\n}\n'
-        return self.liveGraphql('WebSocketInfoQuery', variables, query)
+        res = requests.get("https://live.kuaishou.com/live_api/liveroom/websocketinfo?liveStreamId="+liveRoomId, headers=self.headers).json()
+        return res
 
     # 启动websocket服务
     def wssServerStart(self):
         rid = self.getLiveRoomId()
         wssInfo = self.getWebSocketInfo(rid)
-        self.token = wssInfo['data']['webSocketInfo']['token']
-        self.webSocketUrl = wssInfo['data']['webSocketInfo']['webSocketUrls'][0]
+        self.token = wssInfo['data']['token']
+        self.webSocketUrl = wssInfo['data']['websocketUrls'][0]
         websocket.enableTrace(False)
         # 创建一个长连接
         ws = websocket.WebSocketApp(
