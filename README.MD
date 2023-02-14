@@ -9,6 +9,7 @@
 | v1.3.2 | 重构Go快手服务端（增加代理IP传参,废弃PHP版本服务端，补全接入文档说明，增加`哔哩哔哩｜Bilibili`API接口【点赞、评论、分享、收藏、投币】） | 2023.02.15 |
 
 ## [抖音请移步👉](https://github.com/YunzhiYike/douyin-live)
+## [bilibili接入文档👉](https://github.com/YunzhiYike/bilibili-openAPi)
 
 ## 🧪私有化抖音&快手弹幕服务
 > 背景：考虑到开发语言各有不同所以对协议的拆解二开需要花费很多的时间，亦或者说对于萌新同学来讲上手程度太高
