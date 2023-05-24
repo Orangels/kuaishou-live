@@ -11,6 +11,15 @@
 ## [抖音请移步👉](https://github.com/YunzhiYike/douyin-live)
 ## [bilibili接入文档👉](https://github.com/YunzhiYike/bilibili-openAPi)
 
+
+## 🪧 学习交流&兼职
+| 群名称    | 传送门                                       |
+|--------|-------------------------------------------|
+| 代刷社区| [✈️](https://t.me/+RqiGy8UPvF82Mjgx)  |
+| Js逆向交流群| [✈️](https://t.me/+vXOgs2SEJW4wZjAx)      |
+| 软件兼职任务发布总群| [✈️](https://t.me/+DQheyY3sEEg0OWVh)      |
+
+
 ## 🧪私有化抖音&快手弹幕服务
 > 背景：考虑到开发语言各有不同所以对协议的拆解二开需要花费很多的时间，亦或者说对于萌新同学来讲上手程度太高
 > 为此，我们给大家提供了免费的抖音直播推送服务。当然我们也可以支持定制化服务部署（收费）～～
@@ -34,7 +43,7 @@
 ```
 #### 2、连接后心跳说明
 >为了提供资源可用性我们需要在3分钟内发送一个心跳包，包内容就是一个文本`ping`（小写哦～）
-##### 2.1、Go模拟发现心跳包代码 🌰
+##### 2.1、Go模拟发送心跳包代码 🌰
 ```go
     data := "ping"
     err := ws.WriteMessage(websocket.TextMessage, data)
