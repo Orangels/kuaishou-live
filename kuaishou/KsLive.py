@@ -58,7 +58,7 @@ class Tool:
             res.text)
         text = ss.group(1)
         text = json.loads(text)
-        self.liveRoomId = text['liveroom']['liveStream']['id']
+        self.liveRoomId = text['liveroom']['playList'][0]['liveStream']['id']
         if self.liveRoomId == '':
             raise RuntimeError('liveRoomId获取失败')
         return self.liveRoomId
