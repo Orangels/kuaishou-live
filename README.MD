@@ -14,6 +14,8 @@
 
 ## [bilibili接入文档👉](https://github.com/YunzhiYike/bilibili-openAPi)
 
+## [B站请移步👉](https://github.com/YunzhiYike/bilibili-live)
+
 ## [🐮 云获客API开发文档](https://console-docs.apipost.cn/preview/bdf25a21bc341bab/3dfc2f784646d7f7?target_id=99163fb7-9603-4aaf-b1e1-e2bcf7f444e3)
 
 ## 🪧 学习交流&兼职
